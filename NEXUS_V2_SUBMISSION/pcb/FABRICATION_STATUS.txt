@@ -1,0 +1,34 @@
+NEXUS V2 rev B - fabrication status (prototype build)
+
+KiCad DRC (before J2/J4 update): 0 errors, 0 warnings, 0 unconnected, 0 parity. Re-run after this update.
+
+VERIFIED
+  SW1-SW8  C&K PTS526 SPG15 SMTR2 LFS - checked against C&K datasheet page B-35.
+
+FOOTPRINT VERIFIED, PART FIT PENDING
+  ENC1     FlyRobo EC11 15 mm half-shaft, SKU 3370 (prototype only).
+           Footprint matches the ALPS EC11E reference pattern exactly; the only deliberate difference
+           is round 2.6 mm tab holes instead of 2.8 x 1.5 slots (more tolerant of clone tabs).
+           Measure one FlyRobo part with a vernier caliper and compare:
+             1. A-C-B pin spacing (3-pin row) ............ expect 2.5 mm
+             2. Switch pin spacing (2-pin row) ........... expect 5.0 mm
+             3. 3-pin row to 2-pin row distance .......... expect 14.5 mm
+             4. Mounting tabs: centre-to-centre .......... expect 11.2 mm (tabs must fit 2.6 mm round holes:
+                                                           tab width^2 + thickness^2 < 2.5^2)
+             5. Shaft: diameter / flat depth / clicks per turn ... expect 6 mm / D-flat / (record)
+           Plan for production: replace with a branded part that has a published drawing.
+
+NOT YET VERIFIED
+  J1       15-pin 1.0 mm FPC connector (display). Part not chosen: Amphenol SFW15R-1STAE1LF (bottom contact)
+           or Molex 52207-1560 (top contact) depending on the 12 cm Waveshare cable's contact side.
+  J2       USB-C HRO TYPE-C-31-M-12 - pads now match ai03 Type-C.pretty HRO-TYPE-C-31-M-12 (fab-proven community
+           footprint; changes were 0.025-0.05 mm on the GND/VBUS pads). Final check vs HRO PDF (LCSC C165948) pending.
+
+DONE
+  J4       Display 5 V header is now 1x3: 5V, 5V, GND - same order as Raspberry Pi pins 2/4/6, so Waveshare's
+           3-pin GPIO power plug fits the same way it fits a Pi. Display needs >= 0.5 A at 5 V (Waveshare).
+           FIT IT AS A RIGHT-ANGLE header on the FRONT, pins pointing LEFT toward the display: behind the PCB there is
+           only 1.4 mm (thin display) to 6.6 mm, not enough for the plug. In front there is 7.0 mm.
+
+Gerbers, drill, BOM and CPL are intentionally NOT supplied until the items above are closed.
+Any older manufacturing files in this folder are stale and must not be sent to a fab.
